@@ -21,6 +21,25 @@ const finalTime = document.querySelector('.final-time');
 const baseTime = document.querySelector('.base-tiem');
 const penaltyTime = document.querySelector('.penalty-time');
 
+// variables
+let questionAmount = 0;
+
+// getting the value from selected radio button
+function getRadioValue() {
+  let radioValue;
+  radioInputs.forEach((radioInput) => {
+    if (radioInput.checked) {
+      radioValue = radioInput.value;
+    }
+  });
+  return radioValue;
+};
+
+// 
+function selectQuestionAmount(e) {
+  e.preventDefault();
+  questionAmount = getRadioValue();
+}
 
 // event listener 
 startForm.addEventListener('click', () => {
@@ -29,8 +48,12 @@ startForm.addEventListener('click', () => {
     // remove selected label
     radioElement.classList.remove('selected-label');
 
+    // add selected label
     if (radioElement.children[1].checked) {
       radioElement.classList.add('selected-label');
     }
   });
 })
+
+// event listeners
+startForm.addEventListener("click", selectQuestionAmount);
