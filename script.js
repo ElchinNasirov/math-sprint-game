@@ -24,6 +24,12 @@ const penaltyTime = document.querySelector('.penalty-time');
 // variables
 let questionAmount = 0;
 
+// navigate from splash page to countdown page
+function showCountdown() {
+  countdownPage.hidden = false;
+  splashPage.hidden = true;
+}
+
 // getting the value from selected radio button
 function getRadioValue() {
   let radioValue;
@@ -39,6 +45,10 @@ function getRadioValue() {
 function selectQuestionAmount(e) {
   e.preventDefault();
   questionAmount = getRadioValue();
+
+  if (questionAmount) {
+    showCountdown();
+  }
 }
 
 // event listener 
