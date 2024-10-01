@@ -24,10 +24,26 @@ const penaltyTime = document.querySelector('.penalty-time');
 // variables
 let questionAmount = 0;
 
+// displays countdown (3, 2, 1, GO!)
+function startCountdown() {
+  countdown.textContent = '3';
+
+  setTimeout(() => {
+    countdown.textContent = '2';
+  }, 1000);
+  setTimeout(() => {
+    countdown.textContent = '1';
+  }, 2000);
+  setTimeout(() => {
+    countdown.textContent = 'go!';
+  }, 3000);
+}
+
 // navigate from splash page to countdown page
 function showCountdown() {
   countdownPage.hidden = false;
   splashPage.hidden = true;
+  startCountdown();
 }
 
 // getting the value from selected radio button
@@ -66,4 +82,4 @@ startForm.addEventListener('click', () => {
 })
 
 // event listeners
-startForm.addEventListener("click", selectQuestionAmount);
+startForm.addEventListener("submit", selectQuestionAmount);
