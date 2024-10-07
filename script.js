@@ -23,6 +23,11 @@ const penaltyTime = document.querySelector('.penalty-time');
 
 // variables
 let questionAmount = 0;
+let equationsArray = [];
+let firstNumber = 0;
+let secondNumber = 0;
+let wrongFormat = {};
+
 
 // displays countdown (3, 2, 1, GO!)
 function startCountdown() {
