@@ -26,7 +26,8 @@ let questionAmount = 0;
 let equationsArray = [];
 let firstNumber = 0;
 let secondNumber = 0;
-let wrongFormat = {};
+let equationObject = {};
+const wrongFormat = [];
 
 
 // displays countdown (3, 2, 1, GO!)
@@ -44,11 +45,18 @@ function startCountdown() {
   }, 3000);
 }
 
+function showGamePage() {
+  gamePage.hidden = false;
+  countdownPage.hidden = true;
+}
+
 // navigate from splash page to countdown page
 function showCountdown() {
   countdownPage.hidden = false;
   splashPage.hidden = true;
   startCountdown();
+  createEquations();
+  setTimeout(showGamePage(), 400);
 }
 
 // getting the value from selected radio button
@@ -121,6 +129,17 @@ function createEquations() {
     equationObject = { value: equation, evaluated: 'false' };
     equationsArray.push(equationObject);
   }
+  shuffle(equationsArray);
+}
+
+function equationToDOM() {
+  equationsArray.forEach(equation => {
+    const item = document.createElement('div');
+    item.classList.add("item");
+
+    const equationText = document.createElement('h1');
+    equation.textContent = equation.value;
+  })
 }
 
 // event listeners
